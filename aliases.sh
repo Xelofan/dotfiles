@@ -17,8 +17,7 @@ alias	\
         neofetch='neofetch --cpu_speed on' \
         cp='cp -v' \
         systemctl='sudo systemctl' \
-        docker-compose='docker compose' \
-        k='sudo kubectl'
+        docker-compose='docker compose'
 
 ## YT-DLP + OTHER MEDIA STUFF ##
 alias   \
