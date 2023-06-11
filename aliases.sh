@@ -38,4 +38,4 @@ alias	\
         mohaa='ssh daniel@mohaa.imswat.com -i ~/.ssh/SSH/mohaa-vps' \
      	net='ssh daniel@192.168.0.3 -i ~/.ssh/SSH/cloud' \
      	wg='ssh daniel@192.168.0.4 -i ~/.ssh/SSH/cloud' \
-	s='ssh daniel@192.168.0.10 -i ~/.ssh/SSH/cloud'
+	doc='ssh daniel@192.168.0.10 -i ~/.ssh/SSH/ubuntu-cloud'
