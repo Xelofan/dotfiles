@@ -14,8 +14,11 @@ alias	\
         lsa='l' \
         dnf='sudo dnf' \
 	apt='sudo apt' \
+ 	apt-get='sudo apt-get' \
         neofetch='neofetch --cpu_speed on' \
         cp='cp -v' \
+	mv='mv -v' \
+ 	rm='rm -v' \
         systemctl='sudo systemctl' \
         docker-compose='docker compose' \
         k='kubectl'
