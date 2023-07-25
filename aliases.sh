@@ -35,10 +35,9 @@ alias   \
 
 ## SSH Sessions ##
 alias	\
-	arm='ssh daniel@arm.nazx.ch -i ~/.ssh/SSH/arm' \
         ims='ssh daniel@imswat.com -p 9661 -i ~/.ssh/SSH/imswat' \
           imswat='ims' \
         mohaa='ssh daniel@mohaa.imswat.com -i ~/.ssh/SSH/mohaa-vps' \
-     	net='ssh daniel@192.168.0.3 -i ~/.ssh/SSH/cloud' \
+     	net='ssh daniel@192.168.0.3 -i ~/.ssh/SSH/ubuntu-cloud' \
      	wg='ssh daniel@192.168.0.4 -i ~/.ssh/SSH/cloud' \
 	doc='ssh daniel@192.168.0.10 -i ~/.ssh/SSH/ubuntu-cloud'
