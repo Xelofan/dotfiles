@@ -19,10 +19,15 @@ alanpeabody
 
 ##  ZSH Plugins:
 ```
-git brew ansible timer zsh-autosuggestions
+git brew ansible timer zsh-autosuggestions zsh-syntax-highlighting
 ```
 
 ##  ZSH Autosuggestions:
 ```
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+##  ZSH Syntax Highlighting:
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
