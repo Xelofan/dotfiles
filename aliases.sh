@@ -38,6 +38,6 @@ alias	\
         ims='ssh daniel@imswat.com -p 9661 -i ~/.ssh/SSH/imswat' \
           imswat='ims' \
         mohaa='ssh daniel@mohaa.imswat.com -i ~/.ssh/SSH/mohaa-vps' \
-     	net='ssh daniel@192.168.0.3 -i ~/.ssh/SSH/ubuntu-cloud' \
-     	wg='ssh daniel@192.168.0.4 -i ~/.ssh/SSH/cloud' \
-	doc='ssh daniel@192.168.0.10 -i ~/.ssh/SSH/ubuntu-cloud'
+     	net='ssh daniel@10.0.0.3 -i ~/.ssh/SSH/ubuntu-cloud' \
+     	wg='ssh daniel@10.0.0.4 -i ~/.ssh/SSH/cloud' \
+	doc='ssh daniel@10.0.0.10 -i ~/.ssh/SSH/ubuntu-cloud'
