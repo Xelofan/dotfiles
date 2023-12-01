@@ -1,6 +1,14 @@
 ## Install using Ansible
+### Using wget
 ```bash
 sh -c "$(wget -O- https://dot.xelofan.hu)"
+```
+```bash
+wget -O- https://dot.xelofan.hu | bash
+```
+### Using curl
+```bash
+curl -L https://dot.xelofan.hu | bash
 ```
 
 ## Quick Installation
