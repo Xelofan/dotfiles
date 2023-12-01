@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASEDIR=$(dirname "$0")
-source "$BASEDIR"/*.sh
+source "$BASEDIR"/aliases.sh
 
 #if [ "$WSL_DISTRO_NAME" ]; then
 #  pfetch
