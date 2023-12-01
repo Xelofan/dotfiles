@@ -22,7 +22,8 @@ alias	\
         systemctl='sudo systemctl' \
         docker-compose='docker compose' \
         k='kubectl' \
-        db='distrobox'
+        db='distrobox' \
+        dotfiles='sh -c "$(wget -O- https://dot.xelofan.hu)"'
 
 ## YT-DLP + OTHER MEDIA STUFF ##
 alias   \
