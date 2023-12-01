@@ -1,3 +1,8 @@
+## Install using Ansible
+```bash
+sh -c "$(wget -O- https://dot.xelofan.hu)"
+```
+
 ## Quick Installation
 ```
 git clone https://github.com/Xelofan/dotfiles && \
