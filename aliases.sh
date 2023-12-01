@@ -21,7 +21,8 @@ alias	\
  	rm='rm -v' \
         systemctl='sudo systemctl' \
         docker-compose='docker compose' \
-        k='kubectl'
+        k='kubectl' \
+        db='distrobox'
 
 ## YT-DLP + OTHER MEDIA STUFF ##
 alias   \
