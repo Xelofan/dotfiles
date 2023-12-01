@@ -7,7 +7,7 @@
 #fi
 
 alias	\
-        ls='exa -h' \
+        ls='exa -hg' \
         la='ls -la' \
         l='la' \
         ll='ls -l' \
