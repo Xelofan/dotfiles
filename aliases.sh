@@ -21,7 +21,6 @@ alias	\
  	rm='rm -v' \
         systemctl='sudo systemctl' \
         docker-compose='docker compose' \
-        k='kubectl' \
         db='distrobox' \
         dotfiles='sh -c "$(wget -O- https://dot.xelofan.hu)"'
 
