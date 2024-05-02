@@ -15,6 +15,7 @@ alias	\
         dnf='sudo dnf' \
 	apt='sudo apt' \
  	apt-get='sudo apt-get' \
+  	zypper='sudo zypper' \
         neofetch='neofetch --cpu_speed on' \
         cp='cp -v' \
 	mv='mv -v' \
