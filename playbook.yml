@@ -1,0 +1,104 @@
+- hosts: localhost
+  become: false
+
+  vars:
+    packages: "zsh,wget,eza"
+
+  tasks:
+    - name: Install gantsign.oh-my-zsh role from Ansible Galaxy
+      community.general.ansible_galaxy_install:
+        type: role
+        name: gantsign.oh-my-zsh
+
+    - name: "[1/4] Eza - Install gpg (Debian/Ubuntu)"
+      become: true
+      when: ansible_distribution_file_variety == "Debian"
+      package:
+        name: gpg
+        state: present
+    - name: "[2/4] Eza - Create keyrings folder (Debian/Ubuntu)"
+      become: true
+      when: ansible_distribution_file_variety == "Debian"
+      file:
+        path: /etc/apt/keyrings/
+        state: directory
+    - name: "[3/4] Eza - Add GPG key (Debian/Ubuntu)"
+      become: true
+      when: ansible_distribution_file_variety == "Debian"
+      apt_key:
+        url: https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
+        keyring: /etc/apt/keyrings/gierens.gpg
+        state: present
+    - name: "[4/4] Eza - Add repo (Debian/Ubuntu)"
+      become: true
+      when: ansible_distribution_file_variety == "Debian"
+      apt_repository:
+        repo: deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main
+        state: present
+
+    - name: Install zsh
+      when: ansible_distribution != "MacOSX"
+      become: true
+      package:
+        name: "zsh"
+        state: present
+
+    - name: Install packages
+      when: ansible_distribution != "MacOSX"
+      become: true
+      package:
+        name: "{{ packages }}"
+        state: present
+
+    - name: Install packages (macOS)
+      when: ansible_distribution == "MacOSX"
+      package:
+        name: "{{ packages }}"
+        state: present
+
+    - name: Configure Oh My Zsh for {{ ansible_user_id }}
+      include_role:
+        name: gantsign.oh-my-zsh
+      vars:
+        oh_my_zsh_update_mode: auto
+        oh_my_zsh_update_frequency: 14
+        users:
+          - username: "{{ ansible_user_id }}"
+            oh_my_zsh:
+              theme: alanpeabody
+              plugins:
+                - git
+                - brew
+                - ansible
+                - timer
+                - zsh-autosuggestions
+                - zsh-syntax-highlighting
+                - kubectl
+                - docker
+
+    - name: Clone zsh-autosuggestions
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    - name: Clone zsh-syntax-highlighting
+      git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+
+    - name: Migrate ~/dotfiles -> ~/.dotfiles
+      command: mv ~/dotfiles ~/.dotfiles
+      when: lookup('file', '~/dotfiles') is not none
+
+    - name: Clone dotfiles
+      git:
+        repo: "https://github.com/Xelofan/dotfiles"
+        dest: "~/.dotfiles"
+
+    - name: Add block to zshrc
+      blockinfile:
+        path: "~/.zshrc"
+        block: |
+          source ~/.dotfiles/main.sh
+
+          fpath+=(~/.dotfiles/exported_completions)
+          autoload -Uz compinit; compinit
