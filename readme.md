@@ -1,46 +1,12 @@
 ## Install using Ansible
 ### Using wget
 ```bash
-sh -c "$(wget -O- https://dot.xelofan.hu)"
-```
-```bash
 wget -O- https://dot.xelofan.hu | bash
 ```
 ### Using curl
 ```bash
 curl -L https://dot.xelofan.hu | bash
 ```
+## Used ZSH theme and plugins [here](https://github.com/Xelofan/dotfiles/blob/master/playbook.yml#L68)
 
-## Quick Installation
-```
-git clone https://github.com/Xelofan/dotfiles && \
-    sudo apt install zsh -y && \
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
-    cp dotfiles/zshrc ~/.zshrc
-```
-
-## Oh My Zsh
-```
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-##  ZSH Theme:
-```
-alanpeabody
-```
-
-##  ZSH Plugins:
-```
-git brew ansible timer zsh-autosuggestions zsh-syntax-highlighting
-```
-
-##  ZSH Autosuggestions:
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-
-##  ZSH Syntax Highlighting:
-```
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
+###### The included HCloud autocompletion was generated using `hcloud completion zsh` and was added here for easier installation
