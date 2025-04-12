@@ -36,13 +36,6 @@
         repo: deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main
         state: present
 
-    - name: Install zsh
-      when: ansible_distribution != "MacOSX"
-      become: true
-      package:
-        name: "zsh"
-        state: present
-
     - name: Install packages
       when: ansible_distribution != "MacOSX"
       become: true
