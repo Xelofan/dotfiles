@@ -85,7 +85,7 @@
 
     - name: Migrate ~/dotfiles -> ~/.dotfiles
       command: mv ~/dotfiles ~/.dotfiles
-      when: oldPath
+      when: oldPath.stat.exists
 
     - name: Clone dotfiles
       git:
