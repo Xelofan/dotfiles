@@ -1,11 +1,11 @@
 ## Install using Ansible
 ### Using wget
 ```bash
-wget -O- https://dot.xelofan.hu | bash
+wget -O- https://dot.xelobat.hu | bash
 ```
 ### Using curl
 ```bash
-curl -L https://dot.xelofan.hu | bash
+curl -L https://dot.xelobat.hu | bash
 ```
 ## Used ZSH theme and plugins [here](https://github.com/Xelofan/dotfiles/blob/master/playbook.yml#L68)
 
