@@ -85,9 +85,14 @@
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"
 
+    - name: Check for ~/dotfiles
+      slurp:
+        stat: ~/dotfiles
+      register: oldPath
+
     - name: Migrate ~/dotfiles -> ~/.dotfiles
       command: mv ~/dotfiles ~/.dotfiles
-      when: lookup('file', '~/dotfiles') is not none
+      when: oldPath
 
     - name: Clone dotfiles
       git:
