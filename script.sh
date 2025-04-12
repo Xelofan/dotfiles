@@ -24,14 +24,15 @@ cmd() {
   if [ "$(id -u)" -eq 0 ]; then
     $@
   else
-    ASKPASS="-K"
     sudo $@
   fi
 }
 
-# Detect the operating system
+if [ "$(id -u)" -ne 0 ]; then
+  ASKPASS="-K"
+fi
+
 if [ -f /etc/os-release ]; then
-  # For Linux distributions with /etc/os-release file
   source /etc/os-release
   OS=$ID
   VERSION_ID=$VERSION_ID
