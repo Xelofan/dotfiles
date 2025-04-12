@@ -11,7 +11,7 @@ alias	\
         la='ls -la' \
         l='la' \
         ll='ls -l' \
-        lsa='l' \
+        lss='/bin/ls' \
         dnf='sudo dnf' \
 	apt='sudo apt' \
  	apt-get='sudo apt-get' \
@@ -23,7 +23,8 @@ alias	\
         systemctl='sudo systemctl' \
         docker-compose='docker compose' \
         db='distrobox' \
-        dotfiles='sh -c "$(wget -O- https://dot.xelofan.hu)"'
+        k='kubectl' \
+        dotfiles_update='curl -L https://dot.xelobat.hu | sh'
 
 ## YT-DLP + OTHER MEDIA STUFF ##
 alias   \
@@ -34,12 +35,3 @@ alias   \
         ytdlflac='yt-dlp -f bestaudio -x --audio-format "flac" -o "%(title)s.%(ext)s" -i $1' \
 	ytdlmp4o='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" -o "%(title)s.%(ext)s" $1' \
 	ffmpegcut='echo ffmpeg -i INPUT_FILE -ss FROM -to TO -c copy OUTPUT_FILE'
-
-## SSH Sessions ##
-alias	\
-        ims='ssh daniel@imswat.com -p 9661 -i ~/.ssh/SSH/imswat' \
-          imswat='ims' \
-        mohaa='ssh daniel@mohaa.imswat.com -i ~/.ssh/SSH/mohaa-vps' \
-     	net='ssh daniel@10.0.0.3 -i ~/.ssh/SSH/ubuntu-cloud' \
-     	wg='ssh daniel@10.0.0.4 -i ~/.ssh/SSH/ubuntu-cloud' \
-	doc='ssh daniel@10.0.0.10 -i ~/.ssh/SSH/ubuntu-cloud'
