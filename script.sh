@@ -52,7 +52,7 @@ case $OS in
   ubuntu)
     if [ $VERSION_ID = "22.04" ]; then
       cmd apt-get update
-      cmd apt-get install curl git -y
+      cmd apt-get install git -y
       
       if ! command_exists pip3; then
         cmd apt-get install python3-pip -y
@@ -66,35 +66,31 @@ case $OS in
       
     elif [ "$(echo $VERSION_ID | cut -d '.' -f 1)" -ge 24 ]; then
       cmd apt-get update
-      cmd apt-get install curl git ansible -y
+      cmd apt-get install git ansible -y
     fi
     ;;
     
   debian)
     if [ $VERSION_ID -ge 12 ]; then
       cmd apt-get update
-      cmd apt-get install curl git ansible -y
+      cmd apt-get install git ansible -y
     fi
     ;;
     
   opensuse*)
     cmd zypper refresh
     
-    # Install curl, git, and ansible
-    cmd zypper -n install curl git ansible
+    # Install git, and ansible
+    cmd zypper -n install git ansible
     ;;
     
   arch)
     cmd pacman -Sy
-    cmd pacman -S --noconfirm curl git ansible
+    cmd pacman -S --noconfirm git ansible
     ;;
     
   darwin)
-    # if ! command_exists brew; then
-    #   err "Homebrew not found, installing..."
-    #   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    # fi
-    brew install curl git ansible
+    brew install git ansible
     ;;
     
   *)
