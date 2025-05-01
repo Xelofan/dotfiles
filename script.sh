@@ -84,6 +84,11 @@ case $OS in
     cmd zypper -n install git ansible
     ;;
     
+  fedora*)
+    cmd dnf makecache --refresh
+    cmd dnf in git ansible -y
+    ;;
+    
   arch)
     cmd pacman -Sy
     cmd pacman -S --noconfirm git ansible
