@@ -10,31 +10,31 @@
         type: role
         name: gantsign.oh-my-zsh
 
-    - name: "[1/4] Eza - Install gpg (Debian/Ubuntu)"
-      become: true
-      when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
-      package:
-        name: gpg
-        state: present
-    - name: "[2/4] Eza - Create keyrings folder (Debian/Ubuntu)"
-      become: true
-      when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
-      file:
-        path: /etc/apt/keyrings/
-        state: directory
-    - name: "[3/4] Eza - Add GPG key (Debian/Ubuntu)"
-      become: true
-      when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
-      apt_key:
-        url: https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
-        keyring: /etc/apt/keyrings/gierens.gpg
-        state: present
-    - name: "[4/4] Eza - Add repo (Debian/Ubuntu)"
-      become: true
-      when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
-      apt_repository:
-        repo: deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main
-        state: present
+    # - name: "[1/4] Eza - Install gpg (Debian/Ubuntu)"
+    #   become: true
+    #   when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
+    #   package:
+    #     name: gpg
+    #     state: present
+    # - name: "[2/4] Eza - Create keyrings folder (Debian/Ubuntu)"
+    #   become: true
+    #   when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
+    #   file:
+    #     path: /etc/apt/keyrings/
+    #     state: directory
+    # - name: "[3/4] Eza - Add GPG key (Debian/Ubuntu)"
+    #   become: true
+    #   when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
+    #   apt_key:
+    #     url: https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
+    #     keyring: /etc/apt/keyrings/gierens.gpg
+    #     state: present
+    # - name: "[4/4] Eza - Add repo (Debian/Ubuntu)"
+    #   become: true
+    #   when: ansible_distribution_file_variety is defined and ansible_distribution_file_variety == "Debian"
+    #   apt_repository:
+    #     repo: deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main
+    #     state: present
 
     - name: Install packages
       when: ansible_distribution != "MacOSX"
