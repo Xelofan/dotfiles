@@ -109,7 +109,7 @@ case $OS in
     cmd zypper -n install git ansible
     ;;
     
-  fedora*)
+  fedora*|almalinux)
     cmd dnf makecache --refresh
     cmd dnf in git ansible -y
     ;;
