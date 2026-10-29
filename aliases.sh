@@ -1,13 +1,12 @@
 #!/bin/bash
 
-#if [ "$(uname)" != "Darwin" ]; then
-#alias   \
-#	codium="flatpak run com.vscodium.codium --no-sandbox "
-#else
-#fi
+if command -v eza >/dev/null 2>&1; then
+	alias ls='eza -hg'
+else
+	alias ls='ls -F'
+fi
 
 alias	\
-        ls='eza -hg' \
         la='ls -la' \
         l='la' \
         ll='ls -l' \

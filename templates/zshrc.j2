@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+
+# Path to the Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Theme to load. See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="{{ oh_my_zsh_theme }}"
+
+# How Oh My Zsh keeps itself up to date.
+{% if oh_my_zsh_update_mode == 'disabled' %}
+zstyle ':omz:update' mode disabled
+{% elif oh_my_zsh_update_mode == 'reminder' %}
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency {{ oh_my_zsh_update_frequency }}
+{% else %}
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency {{ oh_my_zsh_update_frequency }}
+{% endif %}
+
+# Plugins to load. Standard plugins live in $ZSH/plugins/, custom ones in
+# $ZSH_CUSTOM/plugins/. Add wisely: every plugin slows shell startup.
+#
+# zsh-syntax-highlighting has to stay last in this list -- it wraps the widgets
+# of anything loaded after it and silently stops highlighting them.
+plugins=({{ oh_my_zsh_plugins | join(' ') }})
+
+source $ZSH/oh-my-zsh.sh
+
+source ~/.dotfiles/main.sh

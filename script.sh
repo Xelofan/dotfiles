@@ -53,7 +53,7 @@ fi
 msg "Detected OS: $NAME ($VERSION_ID), installing ansible, git.."
 
 case $OS in
-  ubuntu)
+  ubuntu|pop)
     if [ $VERSION_ID = "22.04" ]; then
       cmd apt-get update
       cmd apt-get install git -y
@@ -81,27 +81,6 @@ case $OS in
     fi
     ;;
 
-  pop)
-    if [ $VERSION_ID = "22.04" ]; then
-      cmd apt-get update
-      cmd apt-get install git -y
-      
-      if ! command_exists pip3; then
-        cmd apt-get install python3-pip -y
-      fi
-      
-      if [ "$(id -u)" -eq 0 ]; then
-        pip3 install ansible
-      else
-        pip3 install --user ansible
-      fi
-      
-    elif [ "$(echo $VERSION_ID | cut -d '.' -f 1)" -ge 24 ]; then
-      cmd apt-get update
-      cmd apt-get install git ansible -y
-    fi
-    ;;
-    
   opensuse*)
     cmd zypper refresh
     
