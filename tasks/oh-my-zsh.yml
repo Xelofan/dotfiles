@@ -33,6 +33,14 @@
     label: "{{ item.item | basename }}"
   when: item.stat.exists
 
+- name: Update Oh My Zsh
+  # fixes autosuggestions and syntax-highlighting after migration
+  ansible.builtin.command: git pull --rebase --quiet origin master
+  args:
+    chdir: "~{{ ansible_facts['user_id'] }}/.oh-my-zsh"
+  changed_when: false
+  failed_when: false
+
 - name: Set permissions of Oh My Zsh
   ansible.builtin.file:
     path: "~{{ ansible_facts['user_id'] }}/.oh-my-zsh"
@@ -45,9 +53,19 @@
     name: "{{ ansible_facts['user_id'] }}"
     shell: "{{ oh_my_zsh_zsh_path }}"
 
-- name: Write .zshrc for {{ ansible_facts['user_id'] }}
+- name: Write managed zsh config for {{ ansible_facts['user_id'] }}
   ansible.builtin.template:
-    src: zshrc.j2
-    dest: "~{{ ansible_facts['user_id'] }}/.zshrc"
+    src: zshrc-managed.j2
+    dest: "~{{ ansible_facts['user_id'] }}/.zshrc-managed"
     backup: true
     mode: "u=rw,go=r"
+
+- name: Source managed zsh config
+  ansible.builtin.blockinfile:
+    path: "~{{ ansible_facts['user_id'] }}/.zshrc"
+    create: true
+    backup: true
+    insertbefore: BOF
+    mode: "u=rw,go=r"
+    block: |
+      [ -f "$HOME/.zshrc-managed" ] && source "$HOME/.zshrc-managed"
