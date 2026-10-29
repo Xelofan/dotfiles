@@ -24,6 +24,7 @@
       - hcloud
       - zsh-autosuggestions
       - helm
+      - tailscale
       # must stay last, it highlights everything loaded before it
       - zsh-syntax-highlighting
 

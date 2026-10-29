@@ -23,6 +23,8 @@ alias	\
         docker-compose='docker compose' \
         db='distrobox' \
         k='kubectl' \
+        ts='tailscale' \
+        tss='ts ssh' \
         dotfiles_update='curl -L https://dot.xelobat.hu | sh'
 
 ## YT-DLP + OTHER MEDIA STUFF ##
