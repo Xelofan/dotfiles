@@ -21,6 +21,7 @@
       - timer
       - kubectl
       - docker
+      - docker-compose
       - hcloud
       - zsh-autosuggestions
       - helm
