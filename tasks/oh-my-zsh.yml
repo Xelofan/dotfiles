@@ -13,15 +13,15 @@
     git clone -c core.autocrlf=input --depth=1
     {{ oh_my_zsh_repo }} .oh-my-zsh
   args:
-    chdir: "~{{ ansible_user_id }}"
-    creates: "~{{ ansible_user_id }}/.oh-my-zsh"
+    chdir: "~{{ ansible_facts['user_id'] }}"
+    creates: "~{{ ansible_facts['user_id'] }}/.oh-my-zsh"
 
 - name: Check zsh-autosuggestions / zsh-syntax-highlighting migration
   ansible.builtin.stat:
     path: "{{ item }}/.git"
   loop:
-    - "~{{ ansible_user_id }}/.oh-my-zsh/plugins/zsh-autosuggestions"
-    - "~{{ ansible_user_id }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+    - "~{{ ansible_facts['user_id'] }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    - "~{{ ansible_facts['user_id'] }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
   register: omz_legacy_plugins
 
 - name: Migrate zsh-autosuggestions / zsh-syntax-highlighting
@@ -35,19 +35,19 @@
 
 - name: Set permissions of Oh My Zsh
   ansible.builtin.file:
-    path: "~{{ ansible_user_id }}/.oh-my-zsh"
+    path: "~{{ ansible_facts['user_id'] }}/.oh-my-zsh"
     mode: "go-w"
     recurse: true
 
-- name: Set default shell for {{ ansible_user_id }}
+- name: Set default shell for {{ ansible_facts['user_id'] }}
   become: true
   ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
+    name: "{{ ansible_facts['user_id'] }}"
     shell: "{{ oh_my_zsh_zsh_path }}"
 
-- name: Write .zshrc for {{ ansible_user_id }}
+- name: Write .zshrc for {{ ansible_facts['user_id'] }}
   ansible.builtin.template:
     src: zshrc.j2
-    dest: "~{{ ansible_user_id }}/.zshrc"
+    dest: "~{{ ansible_facts['user_id'] }}/.zshrc"
     backup: true
     mode: "u=rw,go=r"
