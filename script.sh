@@ -113,7 +113,8 @@ suc "Installation completed"
 msg "Running dotfiles playbook.."
 
 if command_exists ansible-pull; then
-  ansible-pull -U https://github.com/xelofan/dotfiles playbook.yml $ASKPASS
+  ANSIBLE_LOCALHOST_WARNING=False ANSIBLE_HOST_PATTERN_MISMATCH=ignore \
+    ansible-pull -U https://github.com/xelofan/dotfiles playbook.yml $ASKPASS
 else
   err "Could not run 'ansible-pull', exiting.."
   exit 1
